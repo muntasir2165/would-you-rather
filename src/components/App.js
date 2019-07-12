@@ -10,7 +10,7 @@ import {
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 // import Login from "./Login";
-import PrivateRoute from "./PrivateRoute";
+// import PrivateRoute from "./PrivateRoute";
 import Nav from "./Nav";
 import Dashboard from "./Dashboard";
 import NewQuestion from "./NewQuestion";
@@ -45,10 +45,22 @@ class App extends Component {
               path="/protected"
               component={Protected}
             />
-            {/* <PrivateRoute authentication={fakeAuth.isAuthenticated} path="/" component={Dashboard} />
-          <PrivateRoute authentication={fakeAuth.isAuthenticated} path="/new" component={NewQuestion} />
-          <PrivateRoute authentication={fakeAuth.isAuthenticated} path="/leaderboard" component={Leaderboard} />
-        <PrivateRoute authentication={fakeAuth.isAuthenticated} path="/question/:id" component={Question} /> */}
+            <PrivateRoute
+              authentication={fakeAuth.isAuthenticated}
+              path="/dashboard"
+              component={Dashboard}
+            />
+            <PrivateRoute
+              authentication={fakeAuth.isAuthenticated}
+              path="/new"
+              component={NewQuestion}
+            />
+            <PrivateRoute
+              authentication={fakeAuth.isAuthenticated}
+              path="/leaderboard"
+              component={Leaderboard}
+            />
+            {/*<PrivateRoute authentication={fakeAuth.isAuthenticated} path="/question/:id" component={Question} /> */}
           </Switch>
         </div>
       </Router>
@@ -84,6 +96,26 @@ const AuthButton = withRouter(({ history }) =>
     <p>You are not logged in.</p>
   )
 );
+
+function PrivateRoute({ component: Component, ...rest }) {
+  return (
+    <Route
+      {...rest}
+      render={props =>
+        fakeAuth.isAuthenticated ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: { from: props.location }
+            }}
+          />
+        )
+      }
+    />
+  );
+}
 
 function Public() {
   return <h3>Public</h3>;
