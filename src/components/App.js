@@ -1,8 +1,16 @@
 import React, { Component, Fragment } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Redirect,
+  Switch,
+  withRouter
+} from "react-router-dom";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
-import Login from "./Login";
+// import Login from "./Login";
+import PrivateRoute from "./PrivateRoute";
 import Nav from "./Nav";
 import Dashboard from "./Dashboard";
 import NewQuestion from "./NewQuestion";
@@ -17,28 +25,100 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Fragment>
-          <LoadingBar />
-          <div className="container">
-            <Nav />
-            {this.props.loading === true ? null : (
-              <div>
-                <Route path="/" exact component={Dashboard} />
-                {/* <Route path="//:id" component={TweetPage} /> */}
-                {/* <Route path="/new" component={NewTweet} /> */}
-              </div>
-            )}
-          </div>
-        </Fragment>
+        <LoadingBar />
+        <div className="container-fluid">
+          <Nav />
+          <AuthButton />
+          <ul>
+            <li>
+              <Link to="/public">Public Page</Link>
+            </li>
+            <li>
+              <Link to="/protected">Protected Page</Link>
+            </li>
+          </ul>
+          <Switch>
+            <Route path="/public" component={Public} />
+            <Route path="/login" component={Login} />
+            <PrivateRoute
+              authentication={fakeAuth.isAuthenticated}
+              path="/protected"
+              component={Protected}
+            />
+            {/* <PrivateRoute authentication={fakeAuth.isAuthenticated} path="/" component={Dashboard} />
+          <PrivateRoute authentication={fakeAuth.isAuthenticated} path="/new" component={NewQuestion} />
+          <PrivateRoute authentication={fakeAuth.isAuthenticated} path="/leaderboard" component={Leaderboard} />
+        <PrivateRoute authentication={fakeAuth.isAuthenticated} path="/question/:id" component={Question} /> */}
+          </Switch>
+        </div>
       </Router>
     );
   }
 }
 
-function mapStateToProps({ authedUser }) {
-  return {
-    loading: authedUser === null
-  };
+const fakeAuth = {
+  isAuthenticated: false,
+  authenticate(cb) {
+    this.isAuthenticated = true;
+    setTimeout(cb, 100); // fake async
+  },
+  signout(cb) {
+    this.isAuthenticated = false;
+    setTimeout(cb, 100);
+  }
+};
+
+const AuthButton = withRouter(({ history }) =>
+  fakeAuth.isAuthenticated ? (
+    <p>
+      Welcome!{" "}
+      <button
+        onClick={() => {
+          fakeAuth.signout(() => history.push("/"));
+        }}
+      >
+        Sign out
+      </button>
+    </p>
+  ) : (
+    <p>You are not logged in.</p>
+  )
+);
+
+function Public() {
+  return <h3>Public</h3>;
 }
+
+function Protected() {
+  return <h3>Protected</h3>;
+}
+
+class Login extends Component {
+  state = { redirectToReferrer: false };
+
+  login = () => {
+    fakeAuth.authenticate(() => {
+      this.setState({ redirectToReferrer: true });
+    });
+  };
+
+  render() {
+    let { from } = this.props.location.state || { from: { pathname: "/" } };
+    let { redirectToReferrer } = this.state;
+
+    if (redirectToReferrer) return <Redirect to={from} />;
+
+    return (
+      <div>
+        <p>You must log in to view the page at {from.pathname}</p>
+        <button onClick={this.login}>Log in</button>
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = ({ id }) => ({
+  id
+});
 
 export default connect(mapStateToProps)(App);
