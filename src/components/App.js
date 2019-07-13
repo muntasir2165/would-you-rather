@@ -8,18 +8,17 @@ import Protected from "./Protected";
 import LoadingBar from "react-redux-loading";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
+import { login, logout } from "../actions/authentication";
 
 class App extends Component {
-  state = {
-    isAuthenticated: false
-  };
-
   login = callbackFunction => {
-    this.setState({ isAuthenticated: true }, () => setTimeout(callbackFunction, 100));
+    this.props.login("sarahedo");
+    callbackFunction();
   };
 
   logout = callbackFunction => {
-    this.setState({ isAuthenticated: false }, () => setTimeout(callbackFunction, 100));
+    this.props.logout("sarahedo");
+    callbackFunction();
   };
 
   render() {
@@ -27,8 +26,7 @@ class App extends Component {
       <Router>
         <div>
           <AuthButtonWithRouter
-            isAuthenticated={this.state.isAuthenticated}
-            login={this.login}
+            isAuthenticated={this.props.id}
             logout={this.logout}
           />
           <ul>
@@ -47,7 +45,7 @@ class App extends Component {
           <PrivateRoute
             path="/protected"
             component={Protected}
-            isAuthenticated={this.state.isAuthenticated}
+            isAuthenticated={this.props.id}
           />
         </div>
       </Router>
@@ -55,11 +53,17 @@ class App extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  id: state.authentication.id
+});
+
 const mapDispatchToProps = dispatch => ({
-  handleInitialData: () => dispatch(handleInitialData())
+  handleInitialData: () => dispatch(handleInitialData()),
+  login: id => dispatch(login(id)),
+  logout: id => dispatch(logout(id))
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(App);
