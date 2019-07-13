@@ -6,6 +6,12 @@ export default function Nav () {
     <nav className="nav">
       <ul>
         <li>
+          <NavLink to="/public">Public Page</NavLink>
+        </li>
+        <li>
+          <NavLink to="/protected">Protected Page</NavLink>
+        </li>
+        <li>
           <NavLink to="/dashboard" exact activeClassName="active">
             Dashboard
           </NavLink>

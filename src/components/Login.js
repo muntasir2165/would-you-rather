@@ -1,43 +1,28 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { setAuthedUser } from "../actions/authedUser";
+import { Redirect } from "react-router-dom";
 
 class Login extends Component {
-  componentDidMount() {
-    console.log("inside login")
-  }
+  state = { redirectToReferrer: false };
+
+  login = () => {
+    this.props.login(() => {
+      this.setState({ redirectToReferrer: true });
+    });
+  };
 
   render() {
-console.log("id is: " + this.props.id);    return (
-  <div>
-    {this.props.id}
-        <button onClick={ () =>   this.props.setAuthedUser("sarahedo")
-}>log in</button>
-      <ul>
-        {Object.keys(this.props.users).map(userId => (
-          <li key={userId}>
-            {this.props.users[userId].name} ({userId})
-          </li>
-        ))}
-      </ul></div>
+    let { from } = this.props.location.state || { from: { pathname: "/" } };
+    let { redirectToReferrer } = this.state;
+
+    if (redirectToReferrer) return <Redirect to={from} />;
+
+    return (
+      <div>
+        <p>You must log in to view the page at {from.pathname}</p>
+        <button onClick={this.login}>Log in</button>
+      </div>
     );
   }
 }
 
-Login.propTypes = {
-  users: PropTypes.object.isRequired
-};
-
-const mapStateToProps = ({ id, users }) => ({
-  id, users
-});
-
-const mapDispatchToProps = dispatch => ({
-  setAuthedUser: id => dispatch(setAuthedUser(id))
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Login);
+export default Login;
