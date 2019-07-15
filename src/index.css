@@ -21,6 +21,17 @@ code {
   color: rgba(255, 255, 255, 0.8);
 }
 
+/* Home page style rules */
+.home-tab-menu .tab-options:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+.home-tab-menu .active {
+  background-color: silver;
+}
+
+/* Leaderboard page style rules */
 .user-score-container {
   min-height: 96%;
   height: 96%;

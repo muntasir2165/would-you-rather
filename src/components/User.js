@@ -12,9 +12,11 @@ export default function User(props) {
       </div>
       <div className="col-sm-5">
         <div className="row">
-          <div className="col-sm-12">{props.user.name}</div>
+          <div className="col-sm-12">
+            <h3>{props.user.name}</h3>
+          </div>
         </div>
-        <div className="row">
+        <div className="row mt-4">
           <div className="col-sm-12">
             Questions Asked: {Object.keys(props.user.questions).length}
           </div>
@@ -34,8 +36,10 @@ export default function User(props) {
             <hr />
             <div className="row user-score-value">
               <div className="col-sm-12 mt-4">
-                {Object.keys(props.user.questions).length +
-                  Object.keys(props.user.answers).length}
+                <h4>
+                  {Object.keys(props.user.questions).length +
+                    Object.keys(props.user.answers).length}
+                </h4>
               </div>
             </div>
           </div>

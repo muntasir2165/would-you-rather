@@ -70,8 +70,7 @@ class App extends Component {
 
 const mapStateToProps = store => ({
   id: store.authentication.id,
-  users: store.users.users,
-  questions: store.questions.questions
+  users: store.users.users
 });
 
 const mapDispatchToProps = dispatch => ({

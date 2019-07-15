@@ -6,7 +6,6 @@ class Leaderboard extends Component {
   render() {
     return (
       <Fragment>
-        Leaderboard
         <UserListing users={this.props.users} />
       </Fragment>
     );
