@@ -20,3 +20,18 @@ code {
   text-decoration: none;
   color: rgba(255, 255, 255, 0.8);
 }
+
+.user-score-container {
+  min-height: 96%;
+  height: 96%;
+}
+
+.user-score-label {
+  min-height: 25%;
+  height: 25%;
+}
+
+.user-score-value {
+  min-height: 50%;
+  height: 50%;
+}

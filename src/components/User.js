@@ -1,0 +1,46 @@
+import React from "react";
+
+export default function User(props) {
+  return (
+    <div class="row text-center border border-secondary rounded m-2">
+      <div className="col-sm-4">
+        <img
+          src={props.user.avatarURL}
+          alt="user avatar"
+          className="img-thumbnail"
+        />
+      </div>
+      <div className="col-sm-5">
+        <div className="row">
+          <div className="col-sm-12">{props.user.name}</div>
+        </div>
+        <div className="row">
+          <div className="col-sm-12">
+            Questions Asked: {Object.keys(props.user.questions).length}
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-sm-12">
+            Questions Answered: {Object.keys(props.user.answers).length}
+          </div>
+        </div>
+      </div>
+      <div className="col-sm-3">
+        <div className="row border border-secondary user-score-container m-1">
+          <div className="col-sm-12">
+            <div className="row user-score-label m-1">
+              <div className="col-sm-12 mt-4 bg-success">Score</div>
+            </div>
+            <hr />
+            <div className="row user-score-value">
+              <div className="col-sm-12 mt-4">
+                {Object.keys(props.user.questions).length +
+                  Object.keys(props.user.answers).length}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

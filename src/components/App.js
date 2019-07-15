@@ -16,6 +16,8 @@ import { login, logout } from "../actions/authentication";
 class App extends Component {
   componentDidMount() {
     this.props.handleInitialData();
+    // TODO: remove the default login when the app is fully implemented
+    this.props.login("sarahedo");
   }
 
   login = callbackFunction => {
