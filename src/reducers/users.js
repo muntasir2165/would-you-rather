@@ -1,11 +1,11 @@
 import { RECEIVE_USERS } from "../actions/users";
 
-const users = (state = {}, action) => {
+const users = (state = {users: {}}, action) => {
   switch (action.type) {
     case RECEIVE_USERS:
       return {
         ...state,
-        ...action.users
+        users: {...action.users}
       };
     default:
       return state;

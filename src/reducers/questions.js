@@ -4,12 +4,12 @@ import {
   RECEIVE_QUESTIONS
 } from "../actions/questions";
 
-const questions = (state = {}, action) => {
+const questions = (state = {questions: {}}, action) => {
   switch (action.type) {
     case RECEIVE_QUESTIONS:
       return {
         ...state,
-        ...action.questions
+        questions: {...action.questions}
       };
     case ADD_QUESTION:
       const { question } = action;

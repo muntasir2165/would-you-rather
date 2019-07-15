@@ -18,6 +18,11 @@ class Login extends Component {
 
     return (
       <div>
+        <ul>
+          {Object.keys(this.props.users).map(userId => (
+            <li key={userId}>{this.props.users[userId]["name"]}</li>
+          ))}
+        </ul>
         <p>You must log in to view the page at {from.pathname}</p>
         <button onClick={this.login}>Log in</button>
       </div>
