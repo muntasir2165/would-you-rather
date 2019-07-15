@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.logout-button {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.logout-button:hover {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+}

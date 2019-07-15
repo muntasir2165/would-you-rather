@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import AuthButtonWithRouter from "./AuthButtonWithRouter";
-import Login from "./Login";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import NavBar from "./NavBar";
 import PrivateRoute from "./PrivateRoute";
+import Login from "./Login";
 import Public from "./Public";
 import Protected from "./Protected";
 import LoadingBar from "react-redux-loading";
@@ -31,32 +31,14 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
-          <AuthButtonWithRouter
-            isAuthenticated={this.props.id}
-            logout={this.logout}
-          />
-          <ul>
-            <li>
-              <Link to="/public">Public Page</Link>
-            </li>
-            <li>
-              <Link to="/protected">Protected Page</Link>
-            </li>
-            <li>
-              <Link to="/home">Home</Link>
-            </li>
-            <li>
-              <Link to="/newQuestion">New Question</Link>
-            </li>
-            <li>
-              <Link to="/leaderboard">Leaderboard</Link>
-            </li>
-          </ul>
+        <NavBar id={this.props.id} logout={this.logout} />
+        <div className="container-fluid">
           <Route path="/public" component={Public} />
           <Route
             path="/login"
-            render={props => <Login {...props} users={this.props.users} login={this.login} />}
+            render={props => (
+              <Login {...props} users={this.props.users} login={this.login} />
+            )}
           />
           <PrivateRoute
             path="/protected"
