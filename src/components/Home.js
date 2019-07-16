@@ -13,27 +13,29 @@ class Home extends Component {
     this.setState({ unansweredTabActive, answeredTabActive });
   };
 
-  getUnansweredQuestionIds = questions =>
+  getLoggedInUserUnansweredQuestionIds = questions =>
     Object.keys(questions).filter(
       questionId =>
-        questions[questionId]["optionOne"]["votes"].length +
-          questions[questionId]["optionTwo"]["votes"].length ===
-        0
+        questions[questionId]["optionOne"]["votes"].indexOf(this.props.id) ===
+          -1 &&
+        questions[questionId]["optionTwo"]["votes"].indexOf(this.props.id) ===
+          -1
     );
-  
-  getAnsweredQuestionIds = questions =>
+
+  getLoggedInUserAnsweredQuestionIds = questions =>
     Object.keys(questions).filter(
       questionId =>
-        questions[questionId]["optionOne"]["votes"].length +
-          questions[questionId]["optionTwo"]["votes"].length >
-        0
+        questions[questionId]["optionOne"]["votes"].indexOf(this.props.id) !==
+          -1 ||
+        questions[questionId]["optionTwo"]["votes"].indexOf(this.props.id) !==
+          -1
     );
 
   render() {
-    const unansweredQuestionIds = this.getUnansweredQuestionIds(
+    const loggedInUserUnansweredQuestionIds = this.getLoggedInUserUnansweredQuestionIds(
       this.props.questions
     );
-    const answeredQuestionIds = this.getAnsweredQuestionIds(
+    const loggedInUserAnsweredQuestionIds = this.getLoggedInUserAnsweredQuestionIds(
       this.props.questions
     );
     return (
@@ -63,9 +65,11 @@ class Home extends Component {
         <div className="row">
           <div className="col-sm-6 offset-sm-3 offset-sm-right-3">
             {this.state.unansweredTabActive ? (
-              <QuestionListing questionIds={unansweredQuestionIds} />
+              <QuestionListing
+                questionIds={loggedInUserUnansweredQuestionIds}
+              />
             ) : (
-              <QuestionListing questionIds={answeredQuestionIds} />
+              <QuestionListing questionIds={loggedInUserAnsweredQuestionIds} />
             )}
           </div>
         </div>
@@ -75,6 +79,7 @@ class Home extends Component {
 }
 
 const mapStateToProps = store => ({
+  id: store.authentication.id,
   questions: store.questions.questions
 });
 

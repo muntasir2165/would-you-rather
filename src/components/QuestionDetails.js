@@ -47,7 +47,9 @@ class QuestionDetails extends Component {
                           {optionOneVotesPercentage}%
                         </div>
                       </div>
-                      <h6>{`${optionOneVotes.length} of ${totalVotes}`}</h6>
+                      <h6 className="text-center mt-2">{`${
+                        optionOneVotes.length
+                      } of ${totalVotes}`}</h6>
                     </div>
                   </div>
                   <div className="row">
@@ -63,7 +65,9 @@ class QuestionDetails extends Component {
                           {optionTwoVotesPercentage}%
                         </div>
                       </div>
-                      <h6>{`${optionTwoVotes.length} of ${totalVotes}`}</h6>
+                      <h6 className="text-center mt-2">{`${
+                        optionTwoVotes.length
+                      } of ${totalVotes}`}</h6>
                     </div>
                   </div>
                 </div>
