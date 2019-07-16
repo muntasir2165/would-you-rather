@@ -38,7 +38,7 @@ class Home extends Component {
     );
     return (
       <Fragment>
-        <div class="home-tab-menu d-flex justify-content-center">
+        <div className="home-tab-menu d-flex justify-content-center">
           <div className="btn bg-light my-4">
             <h4
               className={classnames("tab-options p-1", {

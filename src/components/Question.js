@@ -1,7 +1,12 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 class Question extends Component {
+  showQuestionDetails = questionId => {
+    this.props.history.push(`/question/${questionId}`);
+  };
+
   render() {
     const question = this.props.questions[this.props.questionId];
     const author = this.props.users[question.author];
@@ -34,7 +39,12 @@ class Question extends Component {
                   </div>
                   <div className="row">
                     <div className="col-sm-12">
-                      <button className="btn btn-info btn-block">
+                      <button
+                        className="btn btn-info btn-block"
+                        onClick={() =>
+                          this.showQuestionDetails(this.props.questionId)
+                        }
+                      >
                         View Poll
                       </button>
                     </div>
@@ -57,4 +67,4 @@ const mapStateToProps = store => ({
 export default connect(
   mapStateToProps,
   null
-)(Question);
+)(withRouter(Question));

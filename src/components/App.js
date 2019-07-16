@@ -12,6 +12,7 @@ import Leaderboard from "./Leaderboard";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import { login, logout } from "../actions/authentication";
+import QuestionDetails from "./QuestionDetails";
 
 class App extends Component {
   componentDidMount() {
@@ -60,6 +61,11 @@ class App extends Component {
           <PrivateRoute
             path="/leaderboard"
             component={Leaderboard}
+            isAuthenticated={this.props.id}
+          />
+          <PrivateRoute
+            path="/question/:id"
+            component={QuestionDetails}
             isAuthenticated={this.props.id}
           />
         </div>
