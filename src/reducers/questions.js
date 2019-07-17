@@ -4,7 +4,7 @@ import {
   RECEIVE_QUESTIONS
 } from "../actions/questions";
 
-const questions = (state = { questions: {} }, action) => {
+export default (questions = (state = { questions: {} }, action) => {
   switch (action.type) {
     case RECEIVE_QUESTIONS:
       return {
@@ -13,32 +13,23 @@ const questions = (state = { questions: {} }, action) => {
       };
     case ADD_QUESTION:
       const { question } = action;
-
-      // let replyingTo = {};
-      // if (tweet.replyingTo !== null) {
-      //   replyingTo = {
-      //     [tweet.replyingTo]: {
-      //       ...state[tweet.replyingTo],
-      //       replies: state[tweet.replyingTo].replies.concat([tweet.id])
-      //     }
-      //   };
-      // }
-
+      questions = {
+        ...state.questions,
+        [question.id]: question
+      };
       return {
-        ...state
-        // [action.tweet.id]: action.tweet,
-        // ...replyingTo
+        ...state,
+        ...questions
       };
     case ADD_QUESTION_ANSWER:
       const { authedUser, qid, answer } = action;
-      console.log("questions reducer: ", authedUser, qid, answer);
       const questions = {
         ...state.questions,
         [qid]: {
           ...state.questions[qid],
           [answer]: {
             ...state.questions[qid][answer],
-            votes: questions[qid][answer].votes.concat([authedUser])
+            votes: state.questions[qid][answer].votes.concat([authedUser])
           }
         }
       };
@@ -49,6 +40,4 @@ const questions = (state = { questions: {} }, action) => {
     default:
       return state;
   }
-};
-
-export default questions;
+});

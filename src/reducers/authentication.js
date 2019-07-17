@@ -1,11 +1,11 @@
 import { LOGIN, LOGOUT } from "../actions/authentication";
 
-const authentication = (state = { id: null }, action) => {
+const authentication = (state = { authedUser: null }, action) => {
   switch (action.type) {
     case LOGIN:
-      return { ...state, id: action.id };
+      return { ...state, authedUser: action.authedUser };
     case LOGOUT:
-      return { ...state, id: null };
+      return { ...state, authedUser: null };
     default:
       return state;
   }

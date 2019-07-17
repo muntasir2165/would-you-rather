@@ -1,4 +1,8 @@
-import { RECEIVE_USERS, UPDATE_USER_ANSWERS } from "../actions/users";
+import {
+  RECEIVE_USERS,
+  ADD_QUESTION_AUTHOR,
+  ADD_QUESTION_ANSWER_AUTHOR
+} from "../actions/users";
 
 const users = (state = { users: {} }, action) => {
   switch (action.type) {
@@ -7,9 +11,19 @@ const users = (state = { users: {} }, action) => {
         ...state,
         users: { ...action.users }
       };
-    case UPDATE_USER_ANSWERS:
+    case ADD_QUESTION_AUTHOR:
+      const { question } = action;
+      const authedUser = question.author;
+      const users = {
+        ...state.users,
+        [authedUser]: {
+          ...state.users[authedUser],
+          questions: state.users[authedUser].questions.concat([question.id])
+        }
+      };
+      return { ...state, ...users };
+    case ADD_QUESTION_ANSWER_AUTHOR:
       const { authedUser, qid, answer } = action;
-      console.log("questions reducer: ", authedUser, qid, answer);
       const users = {
         ...state.users,
         [authedUser]: {

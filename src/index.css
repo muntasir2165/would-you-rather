@@ -12,6 +12,7 @@ code {
     monospace;
 }
 
+/* Navbar style rules */
 .logout-button {
   color: rgba(255, 255, 255, 0.5);
 }

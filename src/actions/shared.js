@@ -1,8 +1,13 @@
-import { getInitialData, saveQuestionAnswer } from "../utils/api";
-import { receiveUsers, handleUpdateUserAnswers } from "../actions/users";
+import { getInitialData, saveQuestion, saveQuestionAnswer } from "../utils/api";
+import {
+  receiveUsers,
+  addQuestionAuthor,
+  addQuestionAnswerAuthor
+} from "../actions/users";
 import {
   receiveQuestions,
-  handleAddQuestionAnswer
+  addQuestion,
+  addQuestionAnswer
 } from "../actions/questions";
 import { showLoading, hideLoading } from "react-redux-loading";
 
@@ -17,23 +22,40 @@ export const handleInitialData = () => {
   };
 };
 
-export const handleUpdateUserAnswersAndAddQuestionAnswer = ({
+export const handleAddQuestion = (
+  author,
+  optionOneText,
+  optionTwoText
+) => dispatch => {
+  dispatch(showLoading());
+  // TODO: test this and remove the "return" if it's not necessary
+  return saveQuestion({
+    author,
+    optionOneText,
+    optionTwoText
+  })
+    .then(question => {
+      dispatch(addQuestion(question));
+      dispatch(addQuestionAuthor(question));
+    })
+    .then(() => dispatch(hideLoading()));
+};
+
+export const handleAddQuestionAnswer = ({
   authedUser,
   qid,
   answer
-}) => {
-  return (dispatch, getState) => {
-    console.log("shared.js: ", authedUser, qid, answer);
-    dispatch(showLoading());
-    return saveQuestionAnswer({
-      authedUser,
-      qid,
-      answer
+}) => dispatch => {
+  dispatch(showLoading());
+  // TODO: test this and remove the "return" if it's not necessary
+  return saveQuestionAnswer({
+    authedUser,
+    qid,
+    answer
+  })
+    .then(() => {
+      dispatch(addQuestionAnswer({ authedUser, qid, answer }));
+      dispatch(addQuestionAnswerAuthor({ authedUser, qid, answer }));
     })
-      .then(({authedUser, qid, answer}) => {
-        dispatch(handleUpdateUserAnswers({ authedUser, qid, answer }));
-        dispatch(handleAddQuestionAnswer({ authedUser, qid, answer }));
-      })
-      .then(() => dispatch(hideLoading())).catch(error => console.log(JSON.stringify(error)));
-  };
+    .then(() => dispatch(hideLoading()));
 };

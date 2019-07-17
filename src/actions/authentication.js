@@ -1,15 +1,15 @@
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 
-export const login = id => ({
+export const login = authedUser => ({
   type: LOGIN,
-  id
+  authedUser
 });
 
-export const logout = id =>
-  id
+export const logout = authedUser =>
+  authedUser
     ? {
         type: LOGOUT,
-        id: null
+        authedUser: null
       }
     : null;
