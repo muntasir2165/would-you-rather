@@ -3,8 +3,8 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 class Question extends Component {
-  showQuestionDetails = questionId => {
-    this.props.history.push(`/question/${questionId}`);
+  showQuestionDetails = () => {
+    this.props.history.push(`/question/${this.props.questionId}`);
   };
 
   render() {
@@ -15,7 +15,7 @@ class Question extends Component {
         <div className="col-sm-12">
           <div className="row bg-secondary">
             <div className="col-sm-12">
-              <h4>{author.name} asks:</h4>
+              <h5>{author.name} asks:</h5>
             </div>
           </div>
           <div className="row">
@@ -41,9 +41,7 @@ class Question extends Component {
                     <div className="col-sm-12">
                       <button
                         className="btn btn-info btn-block"
-                        onClick={() =>
-                          this.showQuestionDetails(this.props.questionId)
-                        }
+                        onClick={this.showQuestionDetails}
                       >
                         View Poll
                       </button>

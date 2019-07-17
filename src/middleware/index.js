@@ -4,10 +4,11 @@ import { applyMiddleware, compose } from "redux";
 
 // Expose the app store into the Chrome Redux Devtools extension ONLY IF the app is running locally/in development AND the extension is enabled
 const middleware = [
-  applyMiddleware(thunk, logger),
+  // applyMiddleware(thunk, logger),
+  applyMiddleware(thunk),
   ...((window.location.hostname === "localhost" ||
-  window.location.hostname === "127.0.0.1") &&
-    window.__REDUX_DEVTOOLS_EXTENSION__
+    window.location.hostname === "127.0.0.1") &&
+  window.__REDUX_DEVTOOLS_EXTENSION__
     ? [window.__REDUX_DEVTOOLS_EXTENSION__()]
     : [])
 ];
