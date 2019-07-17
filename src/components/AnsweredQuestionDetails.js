@@ -36,8 +36,8 @@ class AnsweredQuestionDetails extends Component {
                   </div>
                   <div className="row">
                     <div className="col-sm-12">
-                      Would you be rather {question.optionOne.text}?{" "}
-                      {optionOneVotes.indexOf(this.props.id) !== -1 && (
+                      Would you rather {question.optionOne.text}?{" "}
+                      {optionOneVotes.indexOf(this.props.authedUser) !== -1 && (
                         <span className="badge badge-secondary">Your Vote</span>
                       )}
                       <div className="progress">
@@ -57,8 +57,8 @@ class AnsweredQuestionDetails extends Component {
                   </div>
                   <div className="row">
                     <div className="col-sm-12">
-                      Would you be rather {question.optionTwo.text}?{" "}
-                      {optionTwoVotes.indexOf(this.props.id) !== -1 && (
+                      Would you rather {question.optionTwo.text}?{" "}
+                      {optionTwoVotes.indexOf(this.props.authedUser) !== -1 && (
                         <span className="badge badge-secondary">Your Vote</span>
                       )}
                       <div className="progress">
@@ -87,7 +87,7 @@ class AnsweredQuestionDetails extends Component {
 }
 
 const mapStateToProps = store => ({
-  id: store.authentication.id,
+  authedUser: store.authentication.authedUser,
   users: store.users.users,
   questions: store.questions.questions
 });

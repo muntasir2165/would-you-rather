@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 class Question extends Component {
   showQuestionDetails = () => {
-    this.props.history.push(`/question/${this.props.questionId}`);
+    this.props.history.push(`/questions/${this.props.questionId}`);
   };
 
   render() {
@@ -34,7 +34,8 @@ class Question extends Component {
                   </div>
                   <div className="row">
                     <div className="col-sm-12">
-                      {question.optionOne.text} OR {question.optionTwo.text}
+                      {`${question.optionOne.text.slice(0, 10)}...`} OR{" "}
+                      {`${question.optionTwo.text.slice(0, 10)}...`}
                     </div>
                   </div>
                   <div className="row">
@@ -62,7 +63,4 @@ const mapStateToProps = store => ({
   questions: store.questions.questions
 });
 
-export default connect(
-  mapStateToProps,
-  null
-)(withRouter(Question));
+export default connect(mapStateToProps)(withRouter(Question));

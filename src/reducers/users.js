@@ -6,12 +6,13 @@ import {
 
 const users = (state = { users: {} }, action) => {
   switch (action.type) {
-    case RECEIVE_USERS:
+    case RECEIVE_USERS: {
       return {
         ...state,
         users: { ...action.users }
       };
-    case ADD_QUESTION_AUTHOR:
+    }
+    case ADD_QUESTION_AUTHOR: {
       const { question } = action;
       const authedUser = question.author;
       const users = {
@@ -22,7 +23,8 @@ const users = (state = { users: {} }, action) => {
         }
       };
       return { ...state, ...users };
-    case ADD_QUESTION_ANSWER_AUTHOR:
+    }
+    case ADD_QUESTION_ANSWER_AUTHOR: {
       const { authedUser, qid, answer } = action;
       const users = {
         ...state.users,
@@ -35,8 +37,10 @@ const users = (state = { users: {} }, action) => {
         }
       };
       return { ...state, ...users };
-    default:
+    }
+    default: {
       return state;
+    }
   }
 };
 

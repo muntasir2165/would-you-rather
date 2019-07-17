@@ -4,14 +4,15 @@ import {
   RECEIVE_QUESTIONS
 } from "../actions/questions";
 
-export default (questions = (state = { questions: {} }, action) => {
+const questions = (state = { questions: {} }, action) => {
   switch (action.type) {
-    case RECEIVE_QUESTIONS:
+    case RECEIVE_QUESTIONS: {
       return {
         ...state,
         questions: { ...action.questions }
       };
-    case ADD_QUESTION:
+    }
+    case ADD_QUESTION: {
       const { question } = action;
       questions = {
         ...state.questions,
@@ -21,7 +22,8 @@ export default (questions = (state = { questions: {} }, action) => {
         ...state,
         ...questions
       };
-    case ADD_QUESTION_ANSWER:
+    }
+    case ADD_QUESTION_ANSWER: {
       const { authedUser, qid, answer } = action;
       const questions = {
         ...state.questions,
@@ -37,7 +39,11 @@ export default (questions = (state = { questions: {} }, action) => {
         ...state,
         ...questions
       };
-    default:
+    }
+    default: {
       return state;
+    }
   }
-});
+};
+
+export default questions;

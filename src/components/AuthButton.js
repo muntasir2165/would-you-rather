@@ -5,18 +5,16 @@ import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
 function AuthButton(props) {
   const { history } = props;
-  return props.id ? (
+  return props.authedUser ? (
     <button
       className="btn btn-link logout-button"
       onClick={() => {
         props.logout(() => history.push("/"));
       }}
     >
-      Log Out <FontAwesomeIcon icon={faSignOutAlt} />
+      Logout <FontAwesomeIcon icon={faSignOutAlt} />
     </button>
   ) : null;
 }
 
-const AuthButtonWithRouter = withRouter(AuthButton);
-
-export default AuthButtonWithRouter;
+export default withRouter(AuthButton);

@@ -6,10 +6,7 @@ export const login = authedUser => ({
   authedUser
 });
 
-export const logout = authedUser =>
-  authedUser
-    ? {
-        type: LOGOUT,
-        authedUser: null
-      }
-    : null;
+export const logout = () => ({
+  type: LOGOUT,
+  authedUser: null
+});

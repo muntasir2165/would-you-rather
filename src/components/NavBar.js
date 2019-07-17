@@ -1,11 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import AuthButtonWithRouter from "./AuthButtonWithRouter";
+import AuthButton from "./AuthButton";
 
 export default function Navbar(props) {
   return (
     <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
-      <NavLink className="navbar-brand" to="/public">
+      <NavLink className="navbar-brand" to="/">
         Would You Rather
       </NavLink>
 
@@ -29,11 +29,7 @@ export default function Navbar(props) {
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink
-            className="nav-link"
-            activeStyle={{ color: "white" }}
-            to="/home"
-          >
+          <NavLink className="nav-link" activeStyle={{ color: "white" }} to="/">
             Home
           </NavLink>
         </li>
@@ -41,7 +37,7 @@ export default function Navbar(props) {
           <NavLink
             className="nav-link"
             activeStyle={{ color: "white" }}
-            to="/newQuestion"
+            to="/add"
           >
             New Question
           </NavLink>
@@ -56,7 +52,7 @@ export default function Navbar(props) {
           </NavLink>
         </li>
         <li className="nav-item">
-          <AuthButtonWithRouter id={props.id} logout={props.logout} />
+          <AuthButton authedUser={props.authedUser} logout={props.logout} />
         </li>
       </ul>
     </nav>

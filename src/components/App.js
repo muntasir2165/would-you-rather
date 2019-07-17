@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import NavBar from "./NavBar";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
 import Login from "./Login";
+import NavBar from "./NavBar";
 import Public from "./Public";
 import Protected from "./Protected";
 import LoadingBar from "react-redux-loading";
 import Home from "./Home";
-import NewQuestion from "./NewQuestion";
+import AddQuestion from "./AddQuestion";
 import Leaderboard from "./Leaderboard";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
@@ -34,40 +34,48 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <NavBar id={this.props.id} logout={this.logout} />
+        <NavBar authedUser={this.props.authedUser} logout={this.logout} />
         <div className="container-fluid">
-          <Route path="/public" component={Public} />
-          <Route
-            path="/login"
-            render={props => (
-              <Login {...props} users={this.props.users} login={this.login} />
-            )}
-          />
-          <PrivateRoute
-            path="/protected"
-            component={Protected}
-            isAuthenticated={this.props.id}
-          />
-          <PrivateRoute
-            path="/home"
-            component={Home}
-            isAuthenticated={this.props.id}
-          />
-          <PrivateRoute
-            path="/newQuestion"
-            component={NewQuestion}
-            isAuthenticated={this.props.id}
-          />
-          <PrivateRoute
-            path="/leaderboard"
-            component={Leaderboard}
-            isAuthenticated={this.props.id}
-          />
-          <PrivateRoute
-            path="/question/:id"
-            component={QuestionDetails}
-            isAuthenticated={this.props.id}
-          />
+          <Switch>
+            <Route
+              exact
+              path="/login"
+              render={props => (
+                <Login {...props} users={this.props.users} login={this.login} />
+              )}
+            />
+            <Route exact path="/public" component={Public} />
+            <PrivateRoute
+              exact
+              path="/protected"
+              component={Protected}
+              isAuthenticated={this.props.authedUser}
+            />
+            <PrivateRoute
+              exact
+              path="/"
+              component={Home}
+              isAuthenticated={this.props.authedUser}
+            />
+            <PrivateRoute
+              exact
+              path="/add"
+              component={AddQuestion}
+              isAuthenticated={this.props.authedUser}
+            />
+            <PrivateRoute
+              exact
+              path="/leaderboard"
+              component={Leaderboard}
+              isAuthenticated={this.props.authedUser}
+            />
+            <PrivateRoute
+              exact
+              path="/questions/:questionId"
+              component={QuestionDetails}
+              isAuthenticated={this.props.authedUser}
+            />
+          </Switch>
         </div>
       </Router>
     );
@@ -75,14 +83,14 @@ class App extends Component {
 }
 
 const mapStateToProps = store => ({
-  id: store.authentication.id,
+  authedUser: store.authentication.authedUser,
   users: store.users.users
 });
 
 const mapDispatchToProps = dispatch => ({
   handleInitialData: () => dispatch(handleInitialData()),
   login: id => dispatch(login(id)),
-  logout: id => dispatch(logout(id))
+  logout: () => dispatch(logout())
 });
 
 export default connect(

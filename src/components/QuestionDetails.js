@@ -5,21 +5,21 @@ import UnAnsweredQuestionDetails from "./UnAnsweredQuestionDetails";
 
 class QuestionDetails extends Component {
   render() {
-    const question = this.props.questions[this.props.match.params.id];
+    const question = this.props.questions[this.props.match.params.questionId];
     const optionOneVotes = question.optionOne.votes;
     const optionTwoVotes = question.optionTwo.votes;
 
-    return optionOneVotes.indexOf(this.props.id) !== -1 ||
-      optionTwoVotes.indexOf(this.props.id) !== -1 ? (
-      <AnsweredQuestionDetails questionId={this.props.match.params.id} />
+    return optionOneVotes.indexOf(this.props.authedUser) !== -1 ||
+      optionTwoVotes.indexOf(this.props.authedUser) !== -1 ? (
+      <AnsweredQuestionDetails questionId={question.id} />
     ) : (
-      <UnAnsweredQuestionDetails questionId={this.props.match.params.id} />
+      <UnAnsweredQuestionDetails questionId={question.id} />
     );
   }
 }
 
 const mapStateToProps = store => ({
-  id: store.authentication.id,
+  authedUser: store.authentication.authedUser,
   questions: store.questions.questions
 });
 

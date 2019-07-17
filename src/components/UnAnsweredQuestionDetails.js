@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { handleUpdateUserAnswersAndAddQuestionAnswer } from "../actions/shared";
+// import { handleUpdateUserAnswersAndAddQuestionAnswer } from "../actions/shared";
 
 class AnsweredQuestionDetails extends Component {
   state = {
@@ -16,11 +16,11 @@ class AnsweredQuestionDetails extends Component {
 
   submitQuestionAnswer = event => {
     event.preventDefault();
-    this.props.handleUpdateUserAnswersAndAddQuestionAnswer({
-      authedUser: this.props.id,
-      qid: this.props.questionId,
-      answer: this.state.answer
-    });
+    // this.props.handleUpdateUserAnswersAndAddQuestionAnswer({
+    //   authedUser: this.props.id,
+    //   qid: this.props.questionId,
+    //   answer: this.state.answer
+    // });
     this.props.history.push(`/question/${this.props.questionId}`);
   };
 
@@ -98,10 +98,10 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleUpdateUserAnswersAndAddQuestionAnswer: ({ authedUser, qid, answer }) =>
-    dispatch(
-      handleUpdateUserAnswersAndAddQuestionAnswer({ authedUser, qid, answer })
-    )
+  // handleUpdateUserAnswersAndAddQuestionAnswer: ({ authedUser, qid, answer }) =>
+  //   dispatch(
+  //     handleUpdateUserAnswersAndAddQuestionAnswer({ authedUser, qid, answer })
+  //   )
 });
 
 export default connect(

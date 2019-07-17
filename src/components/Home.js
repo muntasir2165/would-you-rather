@@ -16,18 +16,18 @@ class Home extends Component {
   getLoggedInUserUnansweredQuestionIds = questions =>
     Object.keys(questions).filter(
       questionId =>
-        questions[questionId]["optionOne"]["votes"].indexOf(this.props.id) ===
+        questions[questionId].optionOne.votes.indexOf(this.props.authedUser) ===
           -1 &&
-        questions[questionId]["optionTwo"]["votes"].indexOf(this.props.id) ===
+        questions[questionId].optionTwo.votes.indexOf(this.props.authedUser) ===
           -1
     );
 
   getLoggedInUserAnsweredQuestionIds = questions =>
     Object.keys(questions).filter(
       questionId =>
-        questions[questionId]["optionOne"]["votes"].indexOf(this.props.id) !==
+        questions[questionId].optionOne.votes.indexOf(this.props.authedUser) !==
           -1 ||
-        questions[questionId]["optionTwo"]["votes"].indexOf(this.props.id) !==
+        questions[questionId].optionTwo.votes.indexOf(this.props.authedUser) !==
           -1
     );
 
@@ -79,7 +79,7 @@ class Home extends Component {
 }
 
 const mapStateToProps = store => ({
-  id: store.authentication.id,
+  authedUser: store.authentication.authedUser,
   questions: store.questions.questions
 });
 
