@@ -17,9 +17,14 @@ code {
   color: rgba(255, 255, 255, 0.5);
 }
 
+.navbar-brand-app-logo {
+  width: 100px;
+  height: auto;
+}
+
 .navbar-logged-in-user-avatar {
   width: 25px;
-  height: 25px;
+  height: auto;
 }
 
 .logout-button:hover {
