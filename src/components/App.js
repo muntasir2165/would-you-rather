@@ -3,8 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
 import Login from "./Login";
 import NavBar from "./NavBar";
-import Public from "./Public";
-import Protected from "./Protected";
 import LoadingBar from "react-redux-loading";
 import Home from "./Home";
 import AddQuestion from "./AddQuestion";
@@ -18,11 +16,11 @@ class App extends Component {
   componentDidMount() {
     this.props.handleInitialData();
     // TODO: remove the default login when the app is fully implemented
-    this.props.login("sarahedo");
+    this.props.login("johndoe");
   }
 
   login = callbackFunction => {
-    this.props.login("sarahedo");
+    this.props.login("johndoe");
     callbackFunction();
   };
 
@@ -43,13 +41,6 @@ class App extends Component {
               render={props => (
                 <Login {...props} users={this.props.users} login={this.login} />
               )}
-            />
-            <Route exact path="/public" component={Public} />
-            <PrivateRoute
-              exact
-              path="/protected"
-              component={Protected}
-              isAuthenticated={this.props.authedUser}
             />
             <PrivateRoute
               exact

@@ -14,24 +14,6 @@ export default function Navbar(props) {
           <NavLink
             className="nav-link"
             activeStyle={{ color: "white" }}
-            to="/public"
-          >
-            Public
-          </NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink
-            className="nav-link"
-            activeStyle={{ color: "white" }}
-            to="/protected"
-          >
-            Protected
-          </NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink
-            className="nav-link"
-            activeStyle={{ color: "white" }}
             to="/"
           >
             Home
