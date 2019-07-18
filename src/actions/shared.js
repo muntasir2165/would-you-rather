@@ -22,11 +22,11 @@ export const handleInitialData = () => {
   };
 };
 
-export const handleAddQuestion = (
+export const handleAddQuestion = ({
   author,
   optionOneText,
   optionTwoText
-) => dispatch => {
+}) => dispatch => {
   dispatch(showLoading());
   // TODO: test this and remove the "return" if it's not necessary
   return saveQuestion({
