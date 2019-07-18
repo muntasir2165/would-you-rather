@@ -29,7 +29,11 @@ export default function Navbar(props) {
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link" activeStyle={{ color: "white" }} to="/">
+          <NavLink
+            className="nav-link"
+            activeStyle={{ color: "white" }}
+            to="/"
+          >
             Home
           </NavLink>
         </li>
@@ -51,8 +55,37 @@ export default function Navbar(props) {
             LeaderBoard
           </NavLink>
         </li>
+        {props.loggedInUser && (
+          <li className="nav-item">
+            <NavLink
+              className="nav-link"
+              activeStyle={{ color: "white" }}
+              to="#"
+            >
+              Hello {props.loggedInUser.name}
+            </NavLink>
+          </li>
+        )}
+        {props.loggedInUser && (
+          <li className="nav-item">
+            <NavLink
+              className="nav-link"
+              activeStyle={{ color: "white" }}
+              to="#"
+            >
+              <img
+                src={props.loggedInUser && props.loggedInUser.avatarURL}
+                alt="user avatar"
+                className="rounded-circle navbar-logged-in-user-avatar"
+              />
+            </NavLink>
+          </li>
+        )}
         <li className="nav-item">
-          <AuthButton authedUser={props.authedUser} logout={props.logout} />
+          <AuthButton
+            authedUser={props.loggedInUser && props.loggedInUser.id}
+            logout={props.logout}
+          />
         </li>
       </ul>
     </nav>

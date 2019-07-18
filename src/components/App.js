@@ -34,7 +34,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <NavBar authedUser={this.props.authedUser} logout={this.logout} />
+        <NavBar loggedInUser={this.props.users[this.props.authedUser]} logout={this.logout} />
         <div className="container-fluid">
           <Switch>
             <Route

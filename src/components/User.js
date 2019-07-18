@@ -2,7 +2,7 @@ import React from "react";
 
 export default function User(props) {
   return (
-    <div class="row text-center border border-secondary rounded m-2">
+    <div className="row text-center border border-secondary rounded m-2">
       <div className="col-sm-4">
         <img
           src={props.user.avatarURL}
