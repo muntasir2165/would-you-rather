@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import AuthButton from "./AuthButton";
-import AppLogo from "./app-logo.jpg"
+import AppLogo from "./app-logo.jpg";
 
 export default function Navbar(props) {
   return (
@@ -14,13 +14,9 @@ export default function Navbar(props) {
         />
       </NavLink>
 
-      <ul className="navbar-nav">
+      <ul className="navbar-nav ml-auto">
         <li className="nav-item">
-          <NavLink
-            className="nav-link"
-            activeStyle={{ color: "white" }}
-            to="/"
-          >
+          <NavLink className="nav-link" activeStyle={{ color: "white" }} to="/">
             Home
           </NavLink>
         </li>
