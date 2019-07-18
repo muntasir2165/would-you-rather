@@ -27,7 +27,7 @@ class App extends Component {
   };
 
   logout = callbackFunction => {
-    this.props.logout("sarahedo");
+    this.props.logout();
     callbackFunction();
   };
 
