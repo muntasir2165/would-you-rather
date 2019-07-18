@@ -4,39 +4,37 @@ import {
   ADD_QUESTION_ANSWER_AUTHOR
 } from "../actions/users";
 
-const users = (state = { users: {} }, action) => {
+const users = (state = { }, action) => {
   switch (action.type) {
     case RECEIVE_USERS: {
       return {
         ...state,
-        users: { ...action.users }
+        ...action.users
       };
     }
     case ADD_QUESTION_AUTHOR: {
       const { question } = action;
       const authedUser = question.author;
-      const users = {
-        ...state.users,
+      return {
+        ...state,
         [authedUser]: {
-          ...state.users[authedUser],
-          questions: state.users[authedUser].questions.concat([question.id])
+          ...state[authedUser],
+          questions: state[authedUser].questions.concat([question.id])
         }
       };
-      return { ...state, ...users };
     }
     case ADD_QUESTION_ANSWER_AUTHOR: {
       const { authedUser, qid, answer } = action;
-      const users = {
-        ...state.users,
+      return {
+        ...state,
         [authedUser]: {
-          ...state.users[authedUser],
+          ...state[authedUser],
           answers: {
-            ...state.users[authedUser].answers,
+            ...state[authedUser].answers,
             [qid]: answer
           }
         }
       };
-      return { ...state, ...users };
     }
     default: {
       return state;

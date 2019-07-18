@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-// import { handleUpdateUserAnswersAndAddQuestionAnswer } from "../actions/shared";
+import { handleAddQuestionAnswer } from "../actions/shared";
 
-class AnsweredQuestionDetails extends Component {
+class UnAnsweredQuestionDetails extends Component {
   state = {
     answer: "optionOne"
   };
@@ -16,18 +16,17 @@ class AnsweredQuestionDetails extends Component {
 
   submitQuestionAnswer = event => {
     event.preventDefault();
-    // this.props.handleUpdateUserAnswersAndAddQuestionAnswer({
-    //   authedUser: this.props.id,
-    //   qid: this.props.questionId,
-    //   answer: this.state.answer
-    // });
-    this.props.history.push(`/question/${this.props.questionId}`);
+    this.props.handleAddQuestionAnswer({
+      authedUser: this.props.authedUser,
+      qid: this.props.questionId,
+      answer: this.state.answer
+    });
+    this.props.history.push(`/questions/${this.props.questionId}`);
   };
 
   render() {
     const question = this.props.questions[this.props.questionId];
     const author = this.props.users[question.author];
-
     return (
       <div className="row">
         <div className="col-sm-6 offset-sm-3 offset-sm-right-3 border border-secondary rounded mt-2">
@@ -77,7 +76,10 @@ class AnsweredQuestionDetails extends Component {
                         {question.optionTwo.text}
                       </label>
                     </div>
-                    <button type="submit" className="btn btn-info btn-block">
+                    <button
+                      type="submit"
+                      className="btn btn-info btn-block mt-3"
+                    >
                       Submit
                     </button>
                   </form>
@@ -92,19 +94,17 @@ class AnsweredQuestionDetails extends Component {
 }
 
 const mapStateToProps = store => ({
-  id: store.authentication.id,
-  users: store.users.users,
-  questions: store.questions.questions
+  authedUser: store.authentication.authedUser,
+  users: store.users,
+  questions: store.questions
 });
 
 const mapDispatchToProps = dispatch => ({
-  // handleUpdateUserAnswersAndAddQuestionAnswer: ({ authedUser, qid, answer }) =>
-  //   dispatch(
-  //     handleUpdateUserAnswersAndAddQuestionAnswer({ authedUser, qid, answer })
-  //   )
+  handleAddQuestionAnswer: ({ authedUser, qid, answer }) =>
+    dispatch(handleAddQuestionAnswer({ authedUser, qid, answer }))
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(AnsweredQuestionDetails));
+)(withRouter(UnAnsweredQuestionDetails));

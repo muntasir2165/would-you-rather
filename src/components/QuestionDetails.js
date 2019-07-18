@@ -20,7 +20,7 @@ class QuestionDetails extends Component {
 
 const mapStateToProps = store => ({
   authedUser: store.authentication.authedUser,
-  questions: store.questions.questions
+  questions: store.questions
 });
 
 export default connect(

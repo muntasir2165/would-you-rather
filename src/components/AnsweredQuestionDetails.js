@@ -8,8 +8,14 @@ class AnsweredQuestionDetails extends Component {
     const optionOneVotes = question.optionOne.votes;
     const optionTwoVotes = question.optionTwo.votes;
     const totalVotes = optionOneVotes.length + optionTwoVotes.length;
-    const optionOneVotesPercentage = (optionOneVotes.length * 100) / totalVotes;
-    const optionTwoVotesPercentage = (optionTwoVotes.length * 100) / totalVotes;
+    const optionOneVotesPercentage = (
+      (optionOneVotes.length * 100) /
+      totalVotes
+    ).toFixed(2);
+    const optionTwoVotesPercentage = (
+      (optionTwoVotes.length * 100) /
+      totalVotes
+    ).toFixed(2);
     return (
       <div className="row">
         <div className="col-sm-6 offset-sm-3 offset-sm-right-3 border border-secondary rounded mt-2">
@@ -88,8 +94,8 @@ class AnsweredQuestionDetails extends Component {
 
 const mapStateToProps = store => ({
   authedUser: store.authentication.authedUser,
-  users: store.users.users,
-  questions: store.questions.questions
+  users: store.users,
+  questions: store.questions
 });
 
 export default connect(

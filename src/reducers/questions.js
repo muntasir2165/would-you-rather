@@ -4,40 +4,32 @@ import {
   RECEIVE_QUESTIONS
 } from "../actions/questions";
 
-const questions = (state = { questions: {} }, action) => {
+const questions = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_QUESTIONS: {
       return {
         ...state,
-        questions: { ...action.questions }
+        ...action.questions
       };
     }
     case ADD_QUESTION: {
       const { question } = action;
-      questions = {
-        ...state.questions,
-        [question.id]: question
-      };
       return {
         ...state,
-        ...questions
+        [question.id]: question
       };
     }
     case ADD_QUESTION_ANSWER: {
       const { authedUser, qid, answer } = action;
-      const questions = {
-        ...state.questions,
-        [qid]: {
-          ...state.questions[qid],
-          [answer]: {
-            ...state.questions[qid][answer],
-            votes: state.questions[qid][answer].votes.concat([authedUser])
-          }
-        }
-      };
       return {
         ...state,
-        ...questions
+        [qid]: {
+          ...state[qid],
+          [answer]: {
+            ...state[qid][answer],
+            votes: state[qid][answer].votes.concat([authedUser])
+          }
+        }
       };
     }
     default: {

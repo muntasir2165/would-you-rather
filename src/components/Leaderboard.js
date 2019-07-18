@@ -13,7 +13,7 @@ class Leaderboard extends Component {
 }
 
 const mapStateToProps = store => ({
-  users: store.users.users
+  users: store.users
 });
 
 export default connect(mapStateToProps)(Leaderboard);
