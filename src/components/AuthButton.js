@@ -9,7 +9,8 @@ function AuthButton(props) {
     <button
       className="btn btn-link logout-button"
       onClick={() => {
-        props.logout(() => history.push("/"));
+        props.logout();
+        history.push("/");
       }}
     >
       Logout <FontAwesomeIcon icon={faSignOutAlt} />

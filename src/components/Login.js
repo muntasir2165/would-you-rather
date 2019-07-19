@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import ReactGif from "./react.gif";
 import { connect } from "react-redux";
-import { login, logout } from "../actions/authentication";
+import { login } from "../actions/authentication";
 
 class Login extends Component {
   state = { redirectToReferrer: false, selectedAuthedUser: "" };

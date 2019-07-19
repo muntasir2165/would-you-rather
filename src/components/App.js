@@ -9,7 +9,6 @@ import AddQuestion from "./AddQuestion";
 import Leaderboard from "./Leaderboard";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
-import { login, logout } from "../actions/authentication";
 import QuestionDetails from "./QuestionDetails";
 
 class App extends Component {
@@ -17,24 +16,13 @@ class App extends Component {
     this.props.handleInitialData();
   }
 
-  logout = callbackFunction => {
-    this.props.logout();
-    callbackFunction();
-  };
-
   render() {
     return (
       <Router>
-        <NavBar loggedInUser={this.props.users[this.props.authedUser]} logout={this.logout} />
+        <NavBar />
         <div className="container-fluid">
           <Switch>
-            <Route
-              exact
-              path="/login"
-              render={props => (
-                <Login {...props} users={this.props.users} login={this.login} />
-              )}
-            />
+            <Route exact path="/login" render={props => <Login {...props} />} />
             <PrivateRoute
               exact
               path="/"
@@ -72,8 +60,7 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleInitialData: () => dispatch(handleInitialData()),
-  logout: () => dispatch(logout())
+  handleInitialData: () => dispatch(handleInitialData())
 });
 
 export default connect(
