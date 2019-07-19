@@ -26,6 +26,9 @@ code {
   width: 100px;
   height: auto;
 }
+.navbar-logged-in-user-info {
+  cursor: text;
+}
 
 .thumbnail-user-avatar {
   width: 25px;

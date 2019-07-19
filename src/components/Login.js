@@ -55,7 +55,8 @@ class Login extends Component {
                         className="form-control"
                         onChange={this.onSelectedAuthedUserChange}
                         name="selectedAuthedUser"
-                      ><option valaue=""></option>
+                      >
+                        <option value="" />
                         {Object.keys(this.props.users).map(userId => (
                           <option key={userId} value={userId} id={userId}>
                             {this.props.users[userId].name}
@@ -66,9 +67,7 @@ class Login extends Component {
                     <button
                       type="submit"
                       className="btn btn-info btn-block mt-3"
-                      disabled={
-                        !this.state.selectedAuthedUser
-                      }
+                      disabled={!this.state.selectedAuthedUser}
                     >
                       Submit
                     </button>

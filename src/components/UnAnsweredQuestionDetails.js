@@ -36,7 +36,7 @@ class UnAnsweredQuestionDetails extends Component {
             </div>
           </div>
 
-          <div className="row">
+          <div className="row text-center">
             <div className="col-sm-12">
               <div className="row">
                 <div className="col-sm-4">
@@ -78,7 +78,7 @@ class UnAnsweredQuestionDetails extends Component {
                     </div>
                     <button
                       type="submit"
-                      className="btn btn-info btn-block mt-3"
+                      className="btn btn-info m-3"
                     >
                       Submit
                     </button>

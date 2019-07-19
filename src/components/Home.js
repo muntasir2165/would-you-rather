@@ -13,31 +13,44 @@ class Home extends Component {
     this.setState({ unansweredTabActive, answeredTabActive });
   };
 
-  getLoggedInUserUnansweredQuestionIds = questions =>
-    Object.keys(questions).filter(
+  sortQuestionsFromRecentToOldest = questions => {
+    questions.sort(
+      (a, b) =>
+        this.props.questions[b].timestamp - this.props.questions[a].timestamp
+    );
+    return questions;
+  };
+
+  getLoggedInUserUnansweredQuestionIds = () => {
+    const unansweredQuestions = Object.keys(this.props.questions).filter(
       questionId =>
-        questions[questionId].optionOne.votes.indexOf(this.props.authedUser) ===
-          -1 &&
-        questions[questionId].optionTwo.votes.indexOf(this.props.authedUser) ===
-          -1
+        this.props.questions[questionId].optionOne.votes.indexOf(
+          this.props.authedUser
+        ) === -1 &&
+        this.props.questions[questionId].optionTwo.votes.indexOf(
+          this.props.authedUser
+        ) === -1
+    );
+    return this.sortQuestionsFromRecentToOldest(unansweredQuestions);
+  };
+
+  getLoggedInUserAnsweredQuestionIds = () => {
+    const answeredQuestions = Object.keys(this.props.questions).filter(
+      questionId =>
+        this.props.questions[questionId].optionOne.votes.indexOf(
+          this.props.authedUser
+        ) !== -1 ||
+        this.props.questions[questionId].optionTwo.votes.indexOf(
+          this.props.authedUser
+        ) !== -1
     );
 
-  getLoggedInUserAnsweredQuestionIds = questions =>
-    Object.keys(questions).filter(
-      questionId =>
-        questions[questionId].optionOne.votes.indexOf(this.props.authedUser) !==
-          -1 ||
-        questions[questionId].optionTwo.votes.indexOf(this.props.authedUser) !==
-          -1
-    );
+    return this.sortQuestionsFromRecentToOldest(answeredQuestions);
+  };
 
   render() {
-    const loggedInUserUnansweredQuestionIds = this.getLoggedInUserUnansweredQuestionIds(
-      this.props.questions
-    );
-    const loggedInUserAnsweredQuestionIds = this.getLoggedInUserAnsweredQuestionIds(
-      this.props.questions
-    );
+    const loggedInUserUnansweredQuestionIds = this.getLoggedInUserUnansweredQuestionIds();
+    const loggedInUserAnsweredQuestionIds = this.getLoggedInUserAnsweredQuestionIds();
     return (
       <Fragment>
         <div className="home-tab-menu d-flex justify-content-center">
