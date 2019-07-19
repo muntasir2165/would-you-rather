@@ -4,7 +4,7 @@ import NotFoundPage from "./NotFoundPage.gif";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFrown, faHome } from "@fortawesome/free-solid-svg-icons";
 
-function PageNotFound(props) {
+const PageNotFound = props => {
   const { history } = props;
   return (
     <div className="row text-center">
@@ -33,6 +33,6 @@ function PageNotFound(props) {
       </div>
     </div>
   );
-}
+};
 
 export default withRouter(PageNotFound);

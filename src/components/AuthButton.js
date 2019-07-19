@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
-function AuthButton(props) {
+const AuthButton = props => {
   const { history } = props;
   return props.authedUser ? (
     <button
@@ -16,6 +16,6 @@ function AuthButton(props) {
       Logout <FontAwesomeIcon icon={faSignOutAlt} />
     </button>
   ) : null;
-}
+};
 
 export default withRouter(AuthButton);

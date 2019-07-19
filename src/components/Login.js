@@ -12,7 +12,8 @@ class Login extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  login = () => {
+  login = event => {
+    event.preventDefault();
     this.props.login(this.state.selectedAuthedUser);
     this.setState({ redirectToReferrer: true });
   };

@@ -18,8 +18,8 @@ class QuestionDetails extends Component {
     const optionTwoVotes = question && question.optionTwo.votes;
 
     return question ? (
-      optionOneVotes.indexOf(this.props.authedUser) !== -1 ||
-      optionTwoVotes.indexOf(this.props.authedUser) !== -1 ? (
+      optionOneVotes.includes(this.props.authedUser) ||
+      optionTwoVotes.includes(this.props.authedUser) ? (
         <AnsweredQuestionDetails questionId={question.id} />
       ) : (
         <UnAnsweredQuestionDetails questionId={question.id} />

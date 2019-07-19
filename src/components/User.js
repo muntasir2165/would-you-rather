@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function User(props) {
+const User = props => {
   return (
     <div className="row text-center border border-secondary rounded m-2">
       <div className="col-sm-4">
@@ -49,4 +49,6 @@ export default function User(props) {
       </div>
     </div>
   );
-}
+};
+
+export default User;

@@ -24,12 +24,12 @@ class Home extends Component {
   getLoggedInUserUnansweredQuestionIds = () => {
     const unansweredQuestions = Object.keys(this.props.questions).filter(
       questionId =>
-        this.props.questions[questionId].optionOne.votes.indexOf(
+        !this.props.questions[questionId].optionOne.votes.includes(
           this.props.authedUser
-        ) === -1 &&
-        this.props.questions[questionId].optionTwo.votes.indexOf(
+        ) &&
+        !this.props.questions[questionId].optionTwo.votes.includes(
           this.props.authedUser
-        ) === -1
+        )
     );
     return this.sortQuestionsFromRecentToOldest(unansweredQuestions);
   };
@@ -37,12 +37,12 @@ class Home extends Component {
   getLoggedInUserAnsweredQuestionIds = () => {
     const answeredQuestions = Object.keys(this.props.questions).filter(
       questionId =>
-        this.props.questions[questionId].optionOne.votes.indexOf(
+        this.props.questions[questionId].optionOne.votes.includes(
           this.props.authedUser
-        ) !== -1 ||
-        this.props.questions[questionId].optionTwo.votes.indexOf(
+        ) ||
+        this.props.questions[questionId].optionTwo.votes.includes(
           this.props.authedUser
-        ) !== -1
+        )
     );
 
     return this.sortQuestionsFromRecentToOldest(answeredQuestions);
@@ -97,7 +97,8 @@ class Home extends Component {
         </div>
       </Fragment>
     );
-  }da
+  }
+  da;
 }
 
 const mapStateToProps = store => ({

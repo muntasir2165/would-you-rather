@@ -1,7 +1,7 @@
 import React from "react";
 import Question from "./Question";
 
-export default function QuestionListing(props) {
+const QuestionListing = props => {
   return (
     <div className="row">
       <div className="col-sm-12">
@@ -11,4 +11,6 @@ export default function QuestionListing(props) {
       </div>
     </div>
   );
-}
+};
+
+export default QuestionListing;
