@@ -71,7 +71,7 @@ export default function Navbar(props) {
                 <img
                   src={props.loggedInUser && props.loggedInUser.avatarURL}
                   alt="user avatar"
-                  className="rounded-circle navbar-logged-in-user-avatar"
+                  className="rounded-circle thumbnail-user-avatar"
                 />
               </NavLink>
             </li>

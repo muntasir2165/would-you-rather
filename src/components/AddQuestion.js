@@ -23,6 +23,7 @@ class AddQuestion extends Component {
     });
     this.props.history.push("/");
   };
+  
   render() {
     return (
       <div className="row">

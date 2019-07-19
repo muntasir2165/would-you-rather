@@ -13,6 +13,11 @@ code {
 }
 
 /* Navbar style rules */
+.login-page-react-gif {
+  width: 75%;
+  height: auto;
+}
+
 .logout-button {
   color: rgba(255, 255, 255, 0.5);
 }
@@ -22,7 +27,7 @@ code {
   height: auto;
 }
 
-.navbar-logged-in-user-avatar {
+.thumbnail-user-avatar {
   width: 25px;
   height: auto;
 }

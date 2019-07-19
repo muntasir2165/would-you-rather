@@ -15,14 +15,7 @@ import QuestionDetails from "./QuestionDetails";
 class App extends Component {
   componentDidMount() {
     this.props.handleInitialData();
-    // TODO: remove the default login when the app is fully implemented
-    this.props.login("johndoe");
   }
-
-  login = callbackFunction => {
-    this.props.login("johndoe");
-    callbackFunction();
-  };
 
   logout = callbackFunction => {
     this.props.logout();
@@ -80,7 +73,6 @@ const mapStateToProps = store => ({
 
 const mapDispatchToProps = dispatch => ({
   handleInitialData: () => dispatch(handleInitialData()),
-  login: id => dispatch(login(id)),
   logout: () => dispatch(logout())
 });
 
