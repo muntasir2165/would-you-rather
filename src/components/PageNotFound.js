@@ -16,7 +16,7 @@ function PageNotFound(props) {
         </div>
         <div className="row">
           <div className="col-sm-12">
-            <h1>404 Page Not Found</h1>
+            <h1>404: Page Not Found</h1>
             <h2>
               <FontAwesomeIcon icon={faFrown} />
             </h2>

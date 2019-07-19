@@ -28,7 +28,6 @@ export const handleAddQuestion = ({
   optionTwoText
 }) => dispatch => {
   dispatch(showLoading());
-  // TODO: test this and remove the "return" if it's not necessary
   return saveQuestion({
     author,
     optionOneText,
@@ -47,7 +46,6 @@ export const handleAddQuestionAnswer = ({
   answer
 }) => dispatch => {
   dispatch(showLoading());
-  // TODO: test this and remove the "return" if it's not necessary
   return saveQuestionAnswer({
     authedUser,
     qid,

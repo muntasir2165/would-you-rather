@@ -7,6 +7,5 @@ export const login = authedUser => ({
 });
 
 export const logout = () => ({
-  type: LOGOUT,
-  authedUser: null
+  type: LOGOUT
 });

@@ -23,9 +23,10 @@ code {
 }
 
 .navbar-brand-app-logo {
-  width: 100px;
-  height: auto;
+  height: 50px;
+  width: auto;
 }
+
 .navbar-logged-in-user-info {
   cursor: text;
 }
@@ -50,18 +51,7 @@ code {
   background-color: silver;
 }
 
-/* Leaderboard page style rules */
-.user-score-container {
-  min-height: 96%;
-  height: 96%;
-}
-
-.user-score-label {
-  min-height: 25%;
-  height: 25%;
-}
-
-.user-score-value {
-  min-height: 50%;
-  height: 50%;
+/* Style rules applicable to multiple pages */
+.user-avatar {
+  border-radius: 50%;
 }

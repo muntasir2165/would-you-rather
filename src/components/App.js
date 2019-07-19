@@ -24,11 +24,7 @@ class App extends Component {
         <LoadingBar />
         <div className="container-fluid">
           <Switch>
-            <Route
-              exact
-              path="/login"
-              render={props => <Login {...props} />}
-            />
+            <Route exact path="/login" render={props => <Login {...props} />} />
             <PrivateRoute
               exact
               path="/"

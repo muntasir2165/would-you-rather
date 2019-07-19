@@ -5,7 +5,7 @@ import { handleAddQuestionAnswer } from "../actions/shared";
 
 class UnAnsweredQuestionDetails extends Component {
   state = {
-    answer: "optionOne"
+    answer: ""
   };
 
   onAnswerSelect = event => {
@@ -21,7 +21,10 @@ class UnAnsweredQuestionDetails extends Component {
       qid: this.props.questionId,
       answer: this.state.answer
     });
-    this.props.history.push(`/questions/${this.props.questionId}`);
+    setTimeout(
+      () => this.props.history.push(`/questions/${this.props.questionId}`),
+      1000
+    );
   };
 
   render() {
@@ -43,7 +46,7 @@ class UnAnsweredQuestionDetails extends Component {
                   <img
                     src={author.avatarURL}
                     alt="author avatar"
-                    className="img-thumbnail"
+                    className="img-thumbnail user-avatar m-auto"
                   />
                 </div>
 
@@ -51,34 +54,33 @@ class UnAnsweredQuestionDetails extends Component {
                   <h4>Would You Rather...</h4>
                   <form onSubmit={this.submitQuestionAnswer}>
                     <div className="form-check">
-                      <label className="form-check-label" htmlFor="optionOne">
-                        <input
-                          type="radio"
-                          className="form-check-input"
-                          name="optionOne"
-                          value="optionOne"
-                          checked={this.state.answer === "optionOne"}
-                          onChange={this.onAnswerSelect}
-                        />
-                        {question.optionOne.text}
-                      </label>
+                      <input
+                        type="radio"
+                        className="form-check-input"
+                        name="optionOne"
+                        value="optionOne"
+                        checked={this.state.answer === "optionOne"}
+                        onChange={this.onAnswerSelect}
+                      />
+                      {question.optionOne.text}{" "}
                     </div>
                     <div className="form-check">
-                      <label className="form-check-label" htmlFor="optionTwo">
-                        <input
-                          type="radio"
-                          className="form-check-input"
-                          name="optionTwo"
-                          value="optionTwo"
-                          checked={this.state.answer === "optionTwo"}
-                          onChange={this.onAnswerSelect}
-                        />
-                        {question.optionTwo.text}
-                      </label>
+                      <input
+                        type="radio"
+                        className="form-check-input"
+                        name="optionTwo"
+                        value="optionTwo"
+                        checked={this.state.answer === "optionTwo"}
+                        onChange={this.onAnswerSelect}
+                      />
+                      {question.optionTwo.text}
                     </div>
                     <button
                       type="submit"
                       className="btn btn-info m-3"
+                      disabled={
+                        !this.state.answer
+                      }
                     >
                       Submit
                     </button>

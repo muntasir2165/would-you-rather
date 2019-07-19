@@ -77,18 +77,27 @@ class Home extends Component {
         </div>
         <div className="row">
           <div className="col-sm-6 offset-sm-3 offset-sm-right-3">
-            {this.state.unansweredTabActive ? (
-              <QuestionListing
-                questionIds={loggedInUserUnansweredQuestionIds}
-              />
-            ) : (
-              <QuestionListing questionIds={loggedInUserAnsweredQuestionIds} />
-            )}
+            {this.state.unansweredTabActive &&
+              (loggedInUserUnansweredQuestionIds.length > 0 ? (
+                <QuestionListing
+                  questionIds={loggedInUserUnansweredQuestionIds}
+                />
+              ) : (
+                <h4 className="text-center">No Unanswered Questions</h4>
+              ))}
+            {this.state.answeredTabActive &&
+              (loggedInUserAnsweredQuestionIds.length > 0 ? (
+                <QuestionListing
+                  questionIds={loggedInUserAnsweredQuestionIds}
+                />
+              ) : (
+                <h4 className="text-center">No Answered Questions</h4>
+              ))}
           </div>
         </div>
       </Fragment>
     );
-  }
+  }da
 }
 
 const mapStateToProps = store => ({

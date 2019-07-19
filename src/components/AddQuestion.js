@@ -21,9 +21,9 @@ class AddQuestion extends Component {
       optionOneText: this.state.optionOneText,
       optionTwoText: this.state.optionTwoText
     });
-    this.props.history.push("/");
+    setTimeout(() => this.props.history.push("/"), 1000);
   };
-  
+
   render() {
     return (
       <div className="row">
@@ -56,19 +56,20 @@ class AddQuestion extends Component {
                     onChange={this.onOptionTextInputChange}
                   />
                 </div>
+                <h5 className="text-center">OR</h5>
                 <div className="form-group">
                   <input
                     type="text"
                     className="form-control"
                     name="optionTwoText"
-                    placeholder="Enter Option One Text Here"
+                    placeholder="Enter Option Two Text Here"
                     value={this.state.optionTwoText}
                     onChange={this.onOptionTextInputChange}
                   />
                 </div>
                 <button
                   type="submit"
-                  className="btn btn-info btn-block mt-3"
+                  className="btn btn-info btn-block my-3"
                   disabled={
                     !this.state.optionOneText || !this.state.optionTwoText
                   }

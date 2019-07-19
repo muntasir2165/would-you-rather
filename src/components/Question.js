@@ -25,12 +25,14 @@ class Question extends Component {
                   <img
                     src={author.avatarURL}
                     alt="author avatar"
-                    className="img-thumbnail"
+                    className="img-thumbnail user-avatar m-auto"
                   />
                 </div>
                 <div className="col-sm-8">
                   <div className="row mt-3">
-                    <div className="col-sm-12"><h5>Would you rather</h5></div>
+                    <div className="col-sm-12">
+                      <h5>Would you rather</h5>
+                    </div>
                   </div>
                   <div className="row mt-3">
                     <div className="col-sm-8 offset-sm-2 offset-sm-right-2">

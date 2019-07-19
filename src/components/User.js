@@ -7,7 +7,7 @@ export default function User(props) {
         <img
           src={props.user.avatarURL}
           alt="user avatar"
-          className="img-thumbnail"
+          className="img-thumbnail user-avatar m-auto"
         />
       </div>
       <div className="col-sm-5">
@@ -30,13 +30,15 @@ export default function User(props) {
       <div className="col-sm-3">
         <div className="row border border-secondary user-score-container m-1">
           <div className="col-sm-12">
-            <div className="row user-score-label m-1">
-              <div className="col-sm-12 mt-4 bg-success">Score</div>
+            <div className="row user-score-label my-1">
+              <div className="col-sm-12 mt-4 bg-success text-truncate">
+                Score
+              </div>
             </div>
             <hr />
             <div className="row user-score-value">
               <div className="col-sm-12 mt-4">
-                <h4>
+                <h4 className="rounded bg-success">
                   {Object.keys(props.user.questions).length +
                     Object.keys(props.user.answers).length}
                 </h4>

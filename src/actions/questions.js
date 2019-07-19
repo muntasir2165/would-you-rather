@@ -14,7 +14,7 @@ export const addQuestion = question => ({
   question
 });
 
-export const addQuestionAnswer = ({authedUser, qid, answer}) => ({
+export const addQuestionAnswer = ({ authedUser, qid, answer }) => ({
   type: ADD_QUESTION_ANSWER,
   authedUser,
   qid,

@@ -31,7 +31,7 @@ class AnsweredQuestionDetails extends Component {
                   <img
                     src={author.avatarURL}
                     alt="author avatar"
-                    className="img-thumbnail"
+                    className="img-thumbnail user-avatar m-auto"
                   />
                 </div>
                 <div className="col-sm-8">
@@ -42,9 +42,11 @@ class AnsweredQuestionDetails extends Component {
                   </div>
                   <div className="row">
                     <div className="col-sm-12">
-                      Would you rather {question.optionOne.text}?{" "}
+                      Would you rather {question.optionOne.text}?
                       {optionOneVotes.indexOf(this.props.authedUser) !== -1 && (
-                        <span className="badge badge-secondary">Your Vote</span>
+                        <span className="badge badge-secondary mx-1">
+                          Your Vote
+                        </span>
                       )}
                       <div className="progress">
                         <div
@@ -63,9 +65,11 @@ class AnsweredQuestionDetails extends Component {
                   </div>
                   <div className="row">
                     <div className="col-sm-12">
-                      Would you rather {question.optionTwo.text}?{" "}
+                      Would you rather {question.optionTwo.text}?
                       {optionTwoVotes.indexOf(this.props.authedUser) !== -1 && (
-                        <span className="badge badge-secondary">Your Vote</span>
+                        <span className="badge badge-secondary mx-1">
+                          Your Vote
+                        </span>
                       )}
                       <div className="progress">
                         <div
@@ -98,7 +102,4 @@ const mapStateToProps = store => ({
   questions: store.questions
 });
 
-export default connect(
-  mapStateToProps,
-  null
-)(AnsweredQuestionDetails);
+export default connect(mapStateToProps)(AnsweredQuestionDetails);

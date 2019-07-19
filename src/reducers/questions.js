@@ -1,7 +1,7 @@
 import {
+  RECEIVE_QUESTIONS,
   ADD_QUESTION,
-  ADD_QUESTION_ANSWER,
-  RECEIVE_QUESTIONS
+  ADD_QUESTION_ANSWER
 } from "../actions/questions";
 
 const questions = (state = {}, action) => {

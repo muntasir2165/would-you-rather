@@ -43,7 +43,7 @@ class Login extends Component {
                   <img
                     src={ReactGif}
                     alt="React Gif"
-                    className="login-page-react-gif"
+                    className="login-page-react-gif image-thumbnail m-auto"
                   />
                 </div>
               </div>
@@ -58,7 +58,7 @@ class Login extends Component {
                       >
                         <option value="" />
                         {Object.keys(this.props.users).map(userId => (
-                          <option key={userId} value={userId} id={userId}>
+                          <option key={userId} value={userId}>
                             {this.props.users[userId].name}
                           </option>
                         ))}

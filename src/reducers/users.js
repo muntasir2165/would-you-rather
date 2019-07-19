@@ -4,7 +4,7 @@ import {
   ADD_QUESTION_ANSWER_AUTHOR
 } from "../actions/users";
 
-const users = (state = { }, action) => {
+const users = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_USERS: {
       return {
