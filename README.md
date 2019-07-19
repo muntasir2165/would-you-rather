@@ -4,7 +4,7 @@ This is the finished app for the final assessment project for Udacity's Redux co
 
 The app utilizes React, Redux and associated concepts in the framework to design and develop a "front-end only" Would You Rather game application . The back-end is simulated using the [_DATA.js](./src/utils/_DATA.js) file.
 
-[App Link](https://muntasir2165.github.io/reactnd-project-myreads-starter)
+[App Link](https://muntasir2165.github.io/would-you-rather/)
 
 ## Getting Started
 

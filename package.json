@@ -2,7 +2,7 @@
   "name": "would-you-rather",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://muntasir2165.github.io/would-you-rather",
+  "homepage": "https://muntasir2165.github.io/would-you-rather/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.19",
     "@fortawesome/free-solid-svg-icons": "^5.9.0",
