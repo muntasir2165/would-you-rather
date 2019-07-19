@@ -1,20 +1,19 @@
 {
   "files": {
-    "main.css": "/would-you-rather/static/css/main.00c926e9.chunk.css",
-    "main.js": "/would-you-rather/static/js/main.763110b0.chunk.js",
-    "main.js.map": "/would-you-rather/static/js/main.763110b0.chunk.js.map",
+    "main.css": "/would-you-rather/static/css/main.3cde93d6.chunk.css",
+    "main.js": "/would-you-rather/static/js/main.6472a816.chunk.js",
+    "main.js.map": "/would-you-rather/static/js/main.6472a816.chunk.js.map",
     "runtime~main.js": "/would-you-rather/static/js/runtime~main.2bbe9c67.js",
     "runtime~main.js.map": "/would-you-rather/static/js/runtime~main.2bbe9c67.js.map",
     "static/css/2.df9ef6f4.chunk.css": "/would-you-rather/static/css/2.df9ef6f4.chunk.css",
-    "static/js/2.f76976a8.chunk.js": "/would-you-rather/static/js/2.f76976a8.chunk.js",
-    "static/js/2.f76976a8.chunk.js.map": "/would-you-rather/static/js/2.f76976a8.chunk.js.map",
+    "static/js/2.fc8333ec.chunk.js": "/would-you-rather/static/js/2.fc8333ec.chunk.js",
+    "static/js/2.fc8333ec.chunk.js.map": "/would-you-rather/static/js/2.fc8333ec.chunk.js.map",
     "index.html": "/would-you-rather/index.html",
-    "precache-manifest.6b1d2311771ed61ca9cc63107cb0aeae.js": "/would-you-rather/precache-manifest.6b1d2311771ed61ca9cc63107cb0aeae.js",
+    "precache-manifest.af09c5aa5dc65a461c274a08ec7919ed.js": "/would-you-rather/precache-manifest.af09c5aa5dc65a461c274a08ec7919ed.js",
     "service-worker.js": "/would-you-rather/service-worker.js",
     "static/css/2.df9ef6f4.chunk.css.map": "/would-you-rather/static/css/2.df9ef6f4.chunk.css.map",
-    "static/css/main.00c926e9.chunk.css.map": "/would-you-rather/static/css/main.00c926e9.chunk.css.map",
+    "static/css/main.3cde93d6.chunk.css.map": "/would-you-rather/static/css/main.3cde93d6.chunk.css.map",
     "static/media/NotFoundPage.gif": "/would-you-rather/static/media/NotFoundPage.b286e0c8.gif",
-    "static/media/app-logo.jpg": "/would-you-rather/static/media/app-logo.516bfdbb.jpg",
     "static/media/react.gif": "/would-you-rather/static/media/react.4b93e2af.gif"
   }
 }
