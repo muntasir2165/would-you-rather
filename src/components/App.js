@@ -7,6 +7,7 @@ import LoadingBar from "react-redux-loading";
 import Home from "./Home";
 import AddQuestion from "./AddQuestion";
 import Leaderboard from "./Leaderboard";
+import PageNotFound from "./PageNotFound";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import QuestionDetails from "./QuestionDetails";
@@ -47,6 +48,7 @@ class App extends Component {
               component={QuestionDetails}
               isAuthenticated={this.props.authedUser}
             />
+            <Route path="*" to="/page-not-found" component={PageNotFound} />
           </Switch>
         </div>
       </Router>
