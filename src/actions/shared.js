@@ -14,7 +14,7 @@ import { showLoading, hideLoading } from "react-redux-loading";
 export const handleInitialData = () => {
   return dispatch => {
     dispatch(showLoading());
-    return getInitialData().then(({ users, questions }) => {
+    getInitialData().then(({ users, questions }) => {
       dispatch(receiveUsers(users));
       dispatch(receiveQuestions(questions));
       dispatch(hideLoading());
@@ -28,7 +28,7 @@ export const handleAddQuestion = ({
   optionTwoText
 }) => dispatch => {
   dispatch(showLoading());
-  return saveQuestion({
+  saveQuestion({
     author,
     optionOneText,
     optionTwoText
@@ -46,7 +46,7 @@ export const handleAddQuestionAnswer = ({
   answer
 }) => dispatch => {
   dispatch(showLoading());
-  return saveQuestionAnswer({
+  saveQuestionAnswer({
     authedUser,
     qid,
     answer
